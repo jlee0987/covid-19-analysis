@@ -44,7 +44,7 @@ age_group_dataframe['year'] = df3['year']
 # Plotting the bar charts
 age_group_dataframe.set_index('year').plot(kind='bar', figsize=(12, 6))
 plt.title('Mean Cumulative COVID-19 Rates by Age Group (2020-2022)')
-plt.ylabel('Mean Cumulative Rate')
+plt.ylabel('Mean Cumulative Rate (per 100,000)')
 plt.xlabel('Year')
 plt.xticks(rotation=0)
 plt.legend(title='Age Group')
@@ -123,13 +123,22 @@ plt.show()
 
 
 
-### 4 - Top 5 Days with the Most Active Cases (2020-2022)
+### 4 - Top 5 Days with the Most Active Cases (2020-2024)
+
+# Extracting the date from the Date column
+df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+
+# Filtering for the years 2020 to 2024
+df = df[(df['Date'].dt.year >= 2020) & (df['Date'].dt.year <= 2024)]
 
 # Creating df2 with the relevant columns
 df2 = df[['Date','Total_Active_Cases_by_Date']]
 
-# Grouping by Date and summing up active cases, then sorting
-top_dates = df2.groupby('Date')['Total_Active_Cases_by_Date'].sum().nlargest(5)
+# Grouping by Date and summing up active cases
+total_cases_by_date = df2.groupby('Date')['Total_Active_Cases_by_Date'].sum()
+
+# Getting the top 5 days
+top_5 = total_cases_by_date.nlargest(5).reset_index()
 
 # Plotting the horizontal bar chart with seaborn
 import seaborn as sns
@@ -139,7 +148,7 @@ bar_plot = sns.barplot(x='Total_Active_Cases_by_Date', y='Date', data=top_5)
 for index, value in enumerate(top_5['Total_Active_Cases_by_Date']):
     bar_plot.text(value, index, str(value), color='black', ha='left', va='center')
 
-plt.title('Top 5 Days with the Most Active Cases (2020-2022)’)
+plt.title('Top 5 Days with the Most Active Cases (2020-2024)')
 plt.xlabel('Total Active Cases by Date')
 plt.ylabel('Date')
 plt.show()
@@ -151,7 +160,7 @@ plt.show()
 # Extracting the date from the Date column
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
-# Filtering for the years 2020 to 2022
+# Filtering for the years 2020 to 2024
 df = df[(df['Date'].dt.year >= 2020) & (df['Date'].dt.year <= 2024)]
 
 # Creating df2 with the relevant columns
