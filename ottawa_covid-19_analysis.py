@@ -91,29 +91,7 @@ plt.show()
 
 
 
-### 3 - Top 5 Days with the Most Active Cases (2020-2022)
-
-# Creating df2 with the relevant columns
-df2 = df[['Date','Total_Active_Cases_by_Date']]
-
-# Grouping by Date and summing up active cases, then sorting
-top_dates = df2.groupby('Date')['Total_Active_Cases_by_Date'].sum().nlargest(5)
-
-# Plotting the horizontal bar chart with seaborn
-import seaborn as sns
-bar_plot = sns.barplot(x='Total_Active_Cases_by_Date', y='Date', data=top_5)
-
-# Adding value labels
-for index, value in enumerate(top_5['Total_Active_Cases_by_Date']):
-    bar_plot.text(value, index, str(value), color='black', ha='left', va='center')
-
-plt.title('Top 5 Days with the Most Active Cases (2020-2022)’)
-plt.xlabel('Total Active Cases by Date')
-plt.ylabel('Date')
-plt.show()
-
-
-### 4 - Hospitalization Rates (2020-2023)
+### 3 - Hospitalization Rates (2020-2023)
 
 # Ensuring the 'Date' column is in datetime format
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
@@ -144,6 +122,29 @@ plt.tight_layout()
 plt.show()
 
 
+
+### 4 - Top 5 Days with the Most Active Cases (2020-2022)
+
+# Creating df2 with the relevant columns
+df2 = df[['Date','Total_Active_Cases_by_Date']]
+
+# Grouping by Date and summing up active cases, then sorting
+top_dates = df2.groupby('Date')['Total_Active_Cases_by_Date'].sum().nlargest(5)
+
+# Plotting the horizontal bar chart with seaborn
+import seaborn as sns
+bar_plot = sns.barplot(x='Total_Active_Cases_by_Date', y='Date', data=top_5)
+
+# Adding value labels
+for index, value in enumerate(top_5['Total_Active_Cases_by_Date']):
+    bar_plot.text(value, index, str(value), color='black', ha='left', va='center')
+
+plt.title('Top 5 Days with the Most Active Cases (2020-2022)’)
+plt.xlabel('Total Active Cases by Date')
+plt.ylabel('Date')
+plt.show()
+
+          
 
 ### 5 - Time Series Plot - Cumulative Deaths (2020-2024)
 
