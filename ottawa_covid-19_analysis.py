@@ -109,7 +109,7 @@ df2.dropna(subset=['Hospitalization_Rate'], inplace=True)
 
 plt.figure(figsize=(10, 5))
 plt.plot(df2.index, df2['Hospitalization_Rate'], label='Hospitalization Rate (%)', color='blue')
-plt.title('Hospitalization Rate Over Time')
+plt.title('Hospitalization Rate Over Time (2020-2023)')
 plt.xlabel('Date')
 plt.ylabel('Hospitalization Rate (%)')
 
