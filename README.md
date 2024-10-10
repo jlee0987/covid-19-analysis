@@ -1,6 +1,6 @@
 # 🦠  COVID-19 Analysis
 ### Description
-The objective of this project is to determine... The Python libraries used include pandas, numpy, matplotlib and seaborn. <br/>
+The objective of this project is to conduct an analysis of COVID-19 data for Ottawa over the period 2020-2024. The Python libraries used include pandas, numpy, matplotlib and seaborn. <br/>
 
 _The following data points were extracted for this analysis:<br/>_
 
