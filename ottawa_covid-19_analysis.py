@@ -115,7 +115,6 @@ plt.show()
 
 ### Most Active Cases by Date - Top 5 (2020-2022)
 
-import seaborn as sns
 # Creating df2 with the relevant columns
 df2 = df[['Date','Total_Active_Cases_by_Date']]
 
