@@ -1,7 +1,8 @@
 # 🦠  COVID-19 Analysis
 ### Description
 The objective of this project is to determine... The Python libraries used include pandas, numpy, matplotlib and seaborn. <br/>
-The following data points were extracted for this analysis:
+
+**The following data points were extracted for this analysis:**
 ▪    Mean Cumulative Rate of Cases (per 100,000) by Age Group (2020-2022)  <br/>
 ▪    Mean Cumulative Rate of Cases (per 100,000) by Gender (2020-2022)  <br/>
 ▪    Hospitalization Rates (2020-2023)  (*Note: data missing for 2024) <br/> 
