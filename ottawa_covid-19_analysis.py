@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-### Mean Cumulative Rate of Confirmed COVID-19 Cases - by Age Group (2020-2022)
+### 1 - Mean Cumulative Rate of Confirmed COVID-19 Cases - by Age Group (2020-2022)
 # Reading the CSV file
 df = pd.read_csv("/Users/jillianlee/Downloads/COVID_19_Cases_and_Deaths_Ottawa.csv")
 
@@ -53,7 +53,7 @@ plt.show()
 
 
 
-### Mean Cumulative Rate of Confirmed COVID-19 Cases - by Gender (2020-2022)
+### 2 - Mean Cumulative Rate of Confirmed COVID-19 Cases - by Gender (2020-2022)
 
 # Selecting relevant columns for the analysis
 df2 = df.iloc[:, [0] + list(range(25,27))]
@@ -91,7 +91,7 @@ plt.show()
 
 
 
-### Top 5 Days with the Most Active Cases (2020-2022)
+### 3 - Top 5 Days with the Most Active Cases (2020-2022)
 
 # Creating df2 with the relevant columns
 df2 = df[['Date','Total_Active_Cases_by_Date']]
@@ -113,31 +113,7 @@ plt.ylabel('Date')
 plt.show()
 
 
-### Most Active Cases by Date - Top 5 (2020-2022)
-
-# Creating df2 with the relevant columns
-df2 = df[['Date','Total_Active_Cases_by_Date']]
-
-# Grouping by Date and summing up active cases, then sorting
-top_5 = df2.groupby('Date')['Total_Active_Cases_by_Date'].sum().nlargest(5)
-
-top_5 = top_5.reset_index()
-
-# Plotting the horizontal bar chart with seaborn
-
-bar_plot = sns.barplot(x='Total_Active_Cases_by_Date', y='Date', data=top_5)
-
-# Adding value labels
-for index, value in enumerate(top_5['Total_Active_Cases_by_Date']):
-    bar_plot.text(value, index, str(value), color='black', ha='left', va='center')
-
-plt.title('Top 5 Days with the Most Active Cases (2020-2022)')
-plt.xlabel('Total Active Cases by Date')
-plt.ylabel('Date')
-plt.show()
-
-
-### Time Series Plot - Cumulative Deaths (2020-2023)
+### 4 - Hospitalization Rates (2020-2023)
 
 # Ensuring the 'Date' column is in datetime format
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
@@ -164,13 +140,12 @@ plt.xticks(pd.date_range(start='2020-01-01', end='2023-12-31', freq='3MS'),
            rotation=45, 
            ha='right')
 
-plt.legend()
 plt.tight_layout()
 plt.show()
 
 
 
-### Time Series Plot - Cumulative Deaths (2020-2024)
+### 5 - Time Series Plot - Cumulative Deaths (2020-2024)
 
 # Extracting the date from the Date column
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
